@@ -8,7 +8,7 @@ Wmax = 1;
 Emax = 10*10^-4;
 m_p = 70;
 
-m = m_p + m_g + m_c;
+m = m_p + m_g + m_c
 
 F_b = m * 9.8 * 0.1;
 

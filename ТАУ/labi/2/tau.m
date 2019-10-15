@@ -2,13 +2,14 @@ F_t = 30;
 t_m = 0.2;
 m_g = 10 ;
 m_c = 3;
+v_m = 0.3;
 
 Vmax = 0.3;
 Wmax = 1;
 Emax = 10*10^-4;
 m_p = 70;
 
-m = m_p + m_g + m_c
+m = m_p + m_g + m_c;
 
 F_b = m * 9.8 * 0.1;
 
@@ -49,11 +50,25 @@ i = w_dn / Vmax;
 M_dn = (J_nm * 0.1*J_nm + m/(0.8*i^2))* i * Wmax + (1/i*0.8) * F_n ;
 
 
-c_e = (u_dn-R*I_dn)/w_dn
-k_sigm = 1/c_e
-T_e = L/R
-c_m = M_dn/I_dn
-k_m = R/(c_e*c_m)
-T_m = (J_nm * 0.1*J_nm + m/(i^2))/(c_e*c_m)
+c_e = (u_dn-R*I_dn)/w_dn;
+k_d = 1/c_e;
+T_e = L/R;
+c_m = M_dn/I_dn;
+k_m = R/(c_e*c_m);
+T_m = (J_nm * 0.1*J_nm + m/(i^2))/(c_e*c_m);
 
-K = (w_dn + (k_m*M_dn)/(i^2))/Emax
+K = (v_m + (k_m*F_t)/(i^2))/Emax;
+
+T_1 = (Emax*K)/Wmax;
+T_2 = ((Emax*3.2)/Wmax)^(1/2);
+T_3 = 0.1*T_2;
+
+w_1 = 1/T_1;
+w_2 = 1/T_2;
+w_3 = 1/T_3;
+
+w_c = 3.3 * w_2;
+t_nm = 8/w_c;
+
+k_1 = (K*i*T_m)/(T_3*k_d)
+k_2 = (T_m - T_3)/(T_3*k_d)

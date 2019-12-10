@@ -1,0 +1,14 @@
+3DConfig
+
+Mesh = label10000.sav
+	Scalar : Skin Friction = label10000.sav
+	Vector : Shear Stress = label10000.sav
+Mesh = label10000.sav
+	Scalar : Skin Friction = label10000.sav
+	Vector : Shear Stress = label10000.sav
+Mesh = label10000.sav
+	Scalar : Skin Friction = label10000.sav
+	Vector : Shear Stress = label10000.sav
+Mesh = label10000.sav
+	Scalar : Skin Friction = label10000.sav
+	Vector : Shear Stress = label10000.sav

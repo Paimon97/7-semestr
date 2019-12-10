@@ -1,0 +1,5 @@
+%Block% = label1
+%Segment%    1   1   1  21   1   2  27 U=1 V=0 W=0 
+%Segment%    1  61  21  21   1   2  11 U=0 V=0 W=0 
+%Segment%   61  61   1  21   1   2  29 P=0 
+%Segment%    1  61   1   1   1   2  11 U=0 V=0 W=0 

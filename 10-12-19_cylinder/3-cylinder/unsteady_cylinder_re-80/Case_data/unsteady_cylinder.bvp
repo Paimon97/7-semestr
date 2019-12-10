@@ -1,0 +1,5 @@
+%Block% = 1
+%Segment%    1  41  40  40   1   2  27 U=1 V=0 W=0 
+%Segment%   41 121  40  40   1   2  29 P=0 
+%Segment%  121 161  40  40   1   2  27 U=1 V=0 W=0 
+%Segment%    1 161   1   1   1   2  11 U=0 V=0 W=0 

@@ -9,7 +9,7 @@
 % Generated on: 01-Mar-2019 11:10:18
 
 %% Specify the model name
-model = 'mod3';
+model = 'mod1';
 
 %% Specify the analysis I/Os
 % Get the analysis I/Os from the model

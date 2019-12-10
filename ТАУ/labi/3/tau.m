@@ -35,7 +35,6 @@ i = w_nm / Vmax;
 M_dn = (J_nm * 0.1*J_nm + m/(0.8*i^2))* i * Wmax + (1/i*0.8) * F_n;
 
 
-
  
 
 M_nm = 0.21;

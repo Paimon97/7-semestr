@@ -1,0 +1,7 @@
+2DConfig
+
+Mesh = lebel10008.sav
+	Scalar : Pressure = lebel10008.sav
+	Scalar : Absolute pressure = lebel10008.sav
+	Scalar : Total pressure = lebel10008.sav
+	Vector : Velocity = lebel10008.sav

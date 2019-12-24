@@ -1,14 +1,13 @@
 #include <iostream>
-#include <array>
+#include <vector>
 
 using namespace std;
+
 
 
 int main()
 {
 
-//    cout << "Hello World!" << endl;
-//    return 0;
 }
 
 // Класс балка содержит характеристики балки необходимые для расчета
@@ -19,98 +18,60 @@ public:
     Beam()
     {
         length = 2;
-        square = 1;
-        EE = 2;
-        nfe = 8;
+        HH = 1;
+        BB = 2;
+        KK = 1;
+//        nfe = 8;
     };
 
     // Блок Set-ов. Задаем значения
-    void SetLength(int length){
+    void SetInitalParametrs(int length,int nfe,int HH,int BB,int KK)
+    {
         this->length = length;
+        this->HH = HH;
+        this->BB = BB;
+        this->KK = KK;
+        this->nfe = nfe;
     }
 
-    void SetSquare(float square){
-        this->square = square;
-    }
-
-    void SetEE(int EE){
-        this->EE = EE;
-    }
-    // тут поидие должен быть массив из 1 и -1, но чет у меня какие-то траблы с матрицами
-    void SetRigidMatrix( int RigidMatrix){
-        this->RigidMatrix = RigidMatrix;
-    }
-
-    //Блок Get-ов. Получение значений
-    int GetKe(){
-        return (RigidMatrix*EE*square*length)/nfe;
+    // апроксимированный параболой прогиб
+    vector<double> GetDeflectionLine(float Y)
+    {
+        double b = Y/(0.25*this->nfe);
+        double a = - Y/0.25;
+        for (int i =0; i < this->nfe; i++)
+        {
+            this->YY[i]= a*(i^2) + b*i;
+        }
+        return YY;
     }
 
 
 
 private:
     int length;
-    float square;
-    int EE;
+    int HH;
+    int BB;
+    int KK;
+    vector<double> YY;
+//    vector<double> XX;
+//    int EE;
     int nfe;
-    int RigidMatrix;
-//    float Ke;
 };
 
-// Класс с обработкой результатов ампроксимация и численное интегрирование
-class ProcessingResults
-{
+
+class Calculator{
 public:
 
 
-    // Задание начального набора значений
-    double getData(int n)
-    {
-      double **f;
-      f = new double*[2];
-      f[0] = new double[n];
-      f[1] = new double[n];
-      for (int i = 0; i<n; i++) {
-        f[0][i] = (double)i;
-        f[1][i] = 8 * (double)i - 3;
-        // Добавление случайной составляющей
-        f[1][i] = 8*(double)i - 3 + ((rand()%100)-50)*0.05;
-      }
-//      return f;
-    }
-
-    // Вычисление коэффициентов аппроксимирующей прямой
-    void getApprox(double **x, double *a, double *b, int n)
-    {
-        double sumx = 0;
-        double sumy = 0;
-        double sumx2 = 0;
-        double sumxy = 0;
-        for (int i = 0; i<n; i++) {
-            sumx += x[0][i];
-            sumy += x[1][i];
-            sumx2 += x[0][i] * x[0][i];
-            sumxy += x[0][i] * x[1][i];
-        }
-        *a = (n*sumxy - (sumx*sumy)) / (n*sumx2 - sumx*sumx);
-        *b = (sumy - *a*sumx) / n;
-        return;
-    }
-
-    double f(double x) {
-      return (10 - x);
-    }
-
-    double simpson_integral(double f, double a, double b, int n) {
-      const double h = (b-a)/n;
-      double k1 = 0, k2 = 0;
-      for(int i = 1; i < n; i += 2) {
-        k1 += this->f(a + i*h);
-        k2 += this->f(a + (i+1)*h);
-      }
-      return h/3*(this->f(a) + 4*k1 + 2*k2);
-    }
-
 private:
-
 };
+
+// fc = (f(x + h) - f(x - h)) / (2 * h);
+//f2 = (f(x + h) - 2 * f(x) + f(x - h)) / (h * h);
+//    // вычисляем интеграл по формуле центральных прямугольников
+
+//      Integral = 0.0;
+//      for(i = 1; i <= n; i++)
+//            Integral = Integral + h * f(a + h * (i - 0.5));
+//      cout << "I1 = " << Integral << "\n";
